@@ -3,6 +3,7 @@ import React from "react";
 import { useCart } from "@/app/context/CartContext";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BiSolidCartAdd } from "react-icons/bi";
 
 const AddToCartBtn = ({ product }) => {
   const { addToCart } = useCart();
@@ -50,9 +51,7 @@ const AddToCartBtn = ({ product }) => {
         }}
         className="flex justify-center items-center cursor-pointer text-center rounded bg-slate-800 font-bold p-1 text-white text-sm hover:bg-black transition"
       >
-        <span className="material-symbols-outlined">
-          add_shopping_cart
-        </span>
+        <BiSolidCartAdd  className="material-symbols-outlined " />
       </button>
     </div>
   );

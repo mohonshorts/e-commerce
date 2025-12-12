@@ -6,6 +6,9 @@ import Link from 'next/link'
 import React, { use, useEffect, useState } from 'react'
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AiOutlineProduct } from "react-icons/ai";
+import { MdAccountCircle } from "react-icons/md";
+import { MdOutlinePayments } from "react-icons/md";
 
 
 const Allproduct = ({ params }) => {
@@ -202,7 +205,7 @@ const Allproduct = ({ params }) => {
 
     return (
         <div className=' bg-gray-50'>
-            <Navbar/>
+            <Navbar />
             <ToastContainer
                 position="top-right"
                 autoClose={1000}
@@ -218,10 +221,8 @@ const Allproduct = ({ params }) => {
             />
 
             <div className='mt-5 m-2'>
-                
-                <h2 className='select-none text-center text-2xl font-bold text-black flex items-center  '><span className="material-symbols-outlined text-center">
-                    storefront
-                </span>Buy Product</h2>
+
+                <h2 className='select-none text-center text-2xl font-bold text-black flex items-center  '><AiOutlineProduct className="material-symbols-outlined " />Buy Product</h2>
                 <div className="allP grid md:grid-cols-1 place-items-center sm:grid-cols-1 grid-cols-1 gap-2">
 
                     <div className="topCon relative md:h-[250px] md:w-[420px] h-[200px] w-[350px] rounded-xl text-black flex items-center justify-center border border-gray-900 ">
@@ -244,7 +245,7 @@ const Allproduct = ({ params }) => {
                         <div className='flex flex-col gap-2 rounded-sm mt-4 '>
                             <div className='flex flex-col border rounded p-3 bg-white shadow shadow-black'>
 
-                                <div className='text-xl font-bold flex justify-center items-center gap-2'><span className="material-symbols-outlined">person</span>Billing Details</div>
+                                <div className='text-xl font-bold flex justify-center items-center gap-2'><MdAccountCircle className="material-symbols-outlined " />Billing Details</div>
                                 <div className='bg-black h-px'></div>
                                 <label className='font-bold text-sm '>Full Name</label>
                                 <input required name="name" onChange={handleChange} className='rounded-sm h-10 text-sm  text-center  border m-1 outline-none text-black' type="text" placeholder='Your Name' />
@@ -262,9 +263,7 @@ const Allproduct = ({ params }) => {
                             <div className='flex flex-col border rounded mt-4 gap-3 pb-2 p-3 bg-white shadow shadow-black'>
 
 
-                                <p className='text-xl font-bold flex justify-center items-center gap-2'><span className="material-symbols-outlined">
-                                    payments
-                                </span>Order Summary</p>
+                                <p className='text-xl font-bold flex justify-center items-center gap-2'><MdOutlinePayments className="material-symbols-outlined " />Order Summary</p>
                                 <div className='bg-black h-px'></div>
                                 <input value={`Product: ${product.title}`} readOnly onChange={(item) => item.target.value} className='rounded-sm h-10 text-sm font-bold bg-blue-100  text-center  border m-1 outline-none text-black' type="text" />
                                 <input value={`Porduct Price: ${product.price}`} readOnly onChange={(item) => item.target.value} className='rounded-sm bg-blue-100  h-10 font-bold text-sm  text-center  border m-1 outline-none text-black' type="text" />
@@ -284,7 +283,9 @@ const Allproduct = ({ params }) => {
                                         <div>
                                             <label htmlFor="bkash" className={`cursor-pointer flex justify-center items-center text-sm  font-bold border mt-1 mb-1 p-3 rounded ${formData.payment === "bkash" ? 'bg-pink-50 border-pink-500' : ''}`}>
                                                 <input value="bkash" onChange={handleChange} name='payment' className='accent-pink-500 cursor-pointer' id='bkash' type="radio" />
-                                                <label name='payment' className='cursor-pointer' htmlFor="bkash">Bkash</label>
+                                                <label name='payment' className='cursor-pointer' htmlFor="bkash">
+                                                    <img src="/bkash.svg" width={60} alt="Bkash" />
+                                                </label>
                                             </label>
                                             {formData.payment === 'bkash' && (
                                                 <div className='bg-pink-50 p-4 rounded border border-pink-200 mb-4 shadow-sm'>
@@ -324,7 +325,9 @@ const Allproduct = ({ params }) => {
                                         <div>
                                             <label htmlFor="nagad" className={`cursor-pointer flex justify-center items-center text-sm  font-bold border mt-1 mb-1 p-3 rounded ${formData.payment === "nagad" ? 'bg-orange-50 border-orange-500' : ''}`}>
                                                 <input value="nagad" onChange={handleChange} name='payment' className='accent-orange-500 cursor-pointer' id='nagad' type="radio" />
-                                                <label name='payment' className='cursor-pointer' htmlFor="nagad">Nagad</label>
+                                                <label name='payment' className='cursor-pointer' htmlFor="nagad">
+                                                    <img src="/nagad.svg" width={60} alt="Nagad" />
+                                                </label>
                                             </label>
                                             {
                                                 formData.payment === 'nagad' && (

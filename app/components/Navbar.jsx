@@ -4,6 +4,12 @@ import Search from './Search'
 import Sidebar from './Sidebar'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { IoMenuOutline } from "react-icons/io5";
+import { MdAddShoppingCart } from "react-icons/md";
+import { TbTruckDelivery } from "react-icons/tb";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { IoMdLogIn } from "react-icons/io";
+
 import {
     SignInButton,
     SignUpButton,
@@ -39,10 +45,10 @@ const Navbar = ({ onMenuClick }) => {
     return (
         <nav>
             <div className='bg-slate-800 py-2 flex justify-between items-center text-white'>
-                <div className="menuN hover:bg-slate-700 cursor-pointer mx-2 rounded-full">
-                    <button onClick={onMenuClick} className='hover:cursor-pointer'><span className="material-symbols-outlined m-3">
-                        menu
-                    </span></button>
+                <div className="menuN hover:bg-slate-700 cursor-pointer rounded-full">
+                    <button onClick={onMenuClick} className='hover:cursor-pointer'>
+                        <IoMenuOutline className='h-10 w-10 m-2 material-symbols-outlined' />
+                    </button>
                 </div>
                 {product.map((item, index) => (
                     <div key={item._id || index} className="logo ">
@@ -57,32 +63,24 @@ const Navbar = ({ onMenuClick }) => {
                 </div>
                 <div className="hidden md:block  hover:bg-slate-700 rounded-full cursor-pointer">
                     <Link href="/cart">
-                        <span className="material-symbols-outlined m-3 select-none">
-                            shopping_cart
-                        </span>
+                        <MdAddShoppingCart className='h-7 w-7 m-2.5 material-symbols-outlined' />
                     </Link>
                 </div>
                 <div className="trackD hidden md:block  hover:bg-slate-700 rounded-full cursor-pointer">
                     <Link href="/odertack">
-                        <span className="material-symbols-outlined m-3 select-none">
-                            delivery_truck_speed
-                        </span>
+                        <TbTruckDelivery  className='h-7 w-7 m-2.5 material-symbols-outlined' />
                     </Link>
                 </div>
                 <div className='notifications hidden md:block hover:bg-slate-700 rounded-full cursor-pointer'>
                     <Link href="/notification">
-                        <span className="material-symbols-outlined m-3 select-none">
-                            notifications
-                        </span>
+                        <IoMdNotificationsOutline   className='h-7 w-7 m-2.5 material-symbols-outlined' />
                     </Link>
                 </div>
                 <div className="profile select-none hidden md:block  hover:bg-slate-700 rounded-full cursor-pointer">
                     <SignedOut>
                         <SignInButton>
                             
-                                <span className="material-symbols-outlined m-3 select-none">
-                                    account_circle
-                                </span>
+                                <IoMdLogIn    className='h-7 w-7 m-2.5 material-symbols-outlined' />
                             
                         </SignInButton>
                     </SignedOut>

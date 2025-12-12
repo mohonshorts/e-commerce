@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React, { useEffect, useReducer, useState } from 'react'
 import { useRouter } from "next/navigation"
+import { CiSearch } from "react-icons/ci";
 
 const Search = () => {
     const [query, setQuery] = useState("")
@@ -51,9 +52,7 @@ const Search = () => {
                     onKeyDown={handleKeyDown}
                 />
                 <button onClick={handleSearchSubmit} className='flex justify-center items-center cursor-pointer bg-slate-600 h-9 border-r-slate-600 border-r-15 border-l-slate-600 border-l-15 rounded-r-sm'>
-                    <span className="material-symbols-outlined cursor-pointer select-none">
-                        search
-                    </span>
+                    <CiSearch />
                 </button>
             </div>
             {results.length > 0 && query.length > 0 && (

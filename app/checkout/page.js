@@ -5,6 +5,12 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { IoArrowBackCircle } from "react-icons/io5";
+import { MdOutlinePayments } from "react-icons/md";
+import { MdAccountCircle } from "react-icons/md";
+
+
+
 
 const CheckoutPage = () => {
   const { cart } = useCart();
@@ -194,9 +200,7 @@ const CheckoutPage = () => {
   return (
     <div className="container mx-auto p-5 bg-gray-50 min-h-screen">
       <div>
-        <Link href="/"><span className="material-symbols-outlined">
-          first_page
-        </span></Link>
+        <Link href="/cart"><IoArrowBackCircle className="material-symbols-outlined " /></Link>
       </div>
       <h1 className="text-3xl font-bold mb-8 text-center pt-5">Checkout</h1>
 
@@ -206,7 +210,7 @@ const CheckoutPage = () => {
 
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className='flex items-center gap-2 mb-4 border-b pb-2'>
-              <span className="material-symbols-outlined">person</span>
+              <MdAccountCircle className="material-symbols-outlined " />
               <h2 className="text-xl font-bold">Billing Details</h2>
             </div>
 
@@ -240,7 +244,7 @@ const CheckoutPage = () => {
 
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className='flex items-center gap-2 mb-4 border-b pb-2'>
-              <span className="material-symbols-outlined">payments</span>
+              <MdOutlinePayments className="material-symbols-outlined " />
               <h2 className="text-xl font-bold">Select Payment Method</h2>
             </div>
 
@@ -253,7 +257,7 @@ const CheckoutPage = () => {
               <div className={`border rounded transition ${formData.payment === "bkash" ? 'border-pink-500 bg-pink-50' : ''}`}>
                 <label className="cursor-pointer p-4 flex items-center gap-3">
                   <input type="radio" name="payment" value="bkash" checked={formData.payment === "bkash"} onChange={handleChange} className="accent-pink-600 w-5 h-5" />
-                  <span className="font-bold">Bkash Payment</span>
+                  <img src="/bkash.svg" width={60} alt="Bkash" />
                 </label>
 
                 {formData.payment === 'bkash' && (
@@ -273,7 +277,7 @@ const CheckoutPage = () => {
               <div className={`border rounded transition ${formData.payment === "nagad" ? 'border-orange-500 bg-orange-50' : ''}`}>
                 <label className="cursor-pointer p-4 flex items-center gap-3">
                   <input type="radio" name="payment" value="nagad" checked={formData.payment === "nagad"} onChange={handleChange} className="accent-orange-600 w-5 h-5" />
-                  <span className="font-bold">Nagad Personal</span>
+                  <img src="/nagad.svg" width={60} alt="Nagad" />
                 </label>
 
                 {formData.payment === 'nagad' && (

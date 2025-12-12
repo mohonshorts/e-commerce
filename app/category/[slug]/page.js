@@ -4,6 +4,8 @@ import { db_uri } from "@/app/lib/db";
 import { call } from "@/app/lib/model/callction"; 
 import mongoose from "mongoose";
 import Link from "next/link";
+import { MdOutlineCategory } from "react-icons/md";
+
 
 export default async function CategoryPage({ params }) {
     const { slug } = await params;
@@ -23,7 +25,7 @@ export default async function CategoryPage({ params }) {
             <div className='mt-5'>
                 <div className="flex justify-between items-center mb-6">
                     <h2 className='select-none text-start text-2xl font-bold text-black flex items-center capitalize'>
-                        <span className="material-symbols-outlined mr-2">category</span>
+                        <MdOutlineCategory className="material-symbols-outlined " />
                         {categoryName} Collection
                     </h2>
                     <Link href="/allproductlist" className="text-blue-600 font-bold hover:underline">

@@ -1,6 +1,8 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { MdOutlineCategory } from "react-icons/md";
+
 
 const Topcata = () => {
     const [categores, setCategores] = useState([])
@@ -30,9 +32,7 @@ const Topcata = () => {
             <div className='mt-5'>
                 
                 
-                <Link href="/top"><h2 className='text-start text-2xl font-bold text-black flex items-center select-none'><span className="material-symbols-outlined">
-                    shopping_bag
-                </span>Top Categoris</h2></Link>
+                <Link href="/top"><h2 className='text-start text-2xl font-bold text-black flex items-center select-none'><MdOutlineCategory className="material-symbols-outlined " />Top Categoris</h2></Link>
                 
                 <div className='Top  grid grid-cols-2 md:grid-cols-5 place-items-center gap-6 m-3'>
                     {categores.map((item, index)=>(
