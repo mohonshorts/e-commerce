@@ -47,7 +47,7 @@ const Navbar = ({ onMenuClick }) => {
             <div className='bg-slate-800 py-2 flex justify-between items-center text-white'>
                 <div className="menuN hover:bg-slate-700 cursor-pointer rounded-full">
                     <button onClick={onMenuClick} className='hover:cursor-pointer'>
-                        <IoMenuOutline className='h-10 w-10 m-2 material-symbols-outlined' />
+                        <IoMenuOutline className='h-7 w-7 m-2 material-symbols-outlined' />
                     </button>
                 </div>
                 {product.map((item, index) => (
