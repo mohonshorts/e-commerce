@@ -62,7 +62,7 @@ export default async function CategoryPage({ params }) {
 
                                             <div className='flex justify-start gap-2 text-xs text-gray-600 mt-1'>
                                                 <span>Stock: {item.qauntity || "Available"}</span>
-                                                <AddToCartBtn product={JSON.parse(JSON.stringify(item))} />
+                                                <AddToCartBtn productId={item._id.toString()} />
                                             </div>
                                         </div>
 

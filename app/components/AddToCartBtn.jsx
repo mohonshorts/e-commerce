@@ -1,20 +1,18 @@
 "use client";
-import React from "react";
-import { useCart } from "@/app/context/CartContext";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { BiSolidCartAdd } from "react-icons/bi";
+import { FaCartArrowDown } from "react-icons/fa";
 
-const AddToCartBtn = ({ product }) => {
-  const { addToCart } = useCart();
+export default function AddToCart({ productId }) {
+  const handleAddToCart = (e) => {
 
-  const handleAdd = () => {
-    console.log("Adding Product:", product);
+    e.stopPropagation(); 
+    e.preventDefault();
 
-    if (product) {
-      addToCart(product);
-    } else {
-      toast.error('Product Data Missing!', {
+    const excart = JSON.parse(localStorage.getItem("cart")) || []
+    const itemId = excart.findIndex((item) => item.id === productId)
+    if (itemId > -1) {
+      toast.error('Product Is Alredy In Cart!', {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: false,
@@ -24,37 +22,37 @@ const AddToCartBtn = ({ product }) => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
-      });
-    }
-  };
+      })
+      }else {
+        excart.push({ id: productId })
+       toast.success('Product Added In Cart!', {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      })
+      }
+    localStorage.setItem("cart", JSON.stringify(excart))
+  }
 
-  return (
-    <div>
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={true}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Bounce}
-      />
 
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          handleAdd();
-        }}
-        className="flex justify-center items-center cursor-pointer text-center rounded bg-slate-800 font-bold p-1 text-white text-sm hover:bg-black transition"
-      >
-        <BiSolidCartAdd  className="material-symbols-outlined " />
-      </button>
-    </div>
-  );
-};
+    return (
+      <div>
+       
+        <button
+          onClick={handleAddToCart}
+          className='bg-slate-800 text-white p-4 py-2 rounded'
+        >
+          <FaCartArrowDown />
+        </button>
+      </div>
+    )
+  }
 
-export default AddToCartBtn;
+
+ 

@@ -1,8 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { CartProvider } from "./context/CartContext";
 import Footer from "./components/Footer";
 import { ClerkProvider } from '@clerk/nextjs'
+import { CartProvider } from "./components/context/CartContext";
+import { ToastContainer, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,17 +23,20 @@ export const metadata = {
   openGraph: {
     title: 'Shopico - Best Online Shopping Platform',
     description: 'Experience the best online shopping with Shopico. Great deals and fast shipping.',
-    url: 'https://shopico.com', // আপনার আসল ডোমেইন দিন
+    url: 'https://shopico.com',
     siteName: 'Shopico',
     images: [
       {
-        url: 'https://shopico.com/og-image.jpg',
+        url: '/shopico.png',
         width: 1200,
         height: 630,
       },
     ],
     locale: 'en_US',
     type: 'website',
+  },
+  icons: {
+    icon: '/shopico.png', // public ফোল্ডারে থাকা আইকন
   },
 };
 
@@ -48,16 +53,30 @@ export default function RootLayout({ children }) {
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={true}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
           <CartProvider>
-
-
             {children}
-            <div className='md:hidden z-1'>
-              <Footer />
-            </div>
           </CartProvider>
+          <div className='md:hidden z-1'>
+            <Footer />
+          </div>
+
         </body>
       </html>
     </ClerkProvider>
   );
 }
+
+

@@ -2,10 +2,7 @@ import React from 'react'
 import Footer from '../components/Footer'
 import SettingFotter from '../components/SettingFotter'
 
-export const metadata = {
-  title: 'Settings - Manage Your Shopico Account & Preferences',
-  description: 'Manage your Shopico account securely. Update personal details, change passwords, control notifications, and configure privacy settings easily in one place.',
-};
+
 
 const setting = () => {
   return (
@@ -18,3 +15,21 @@ const setting = () => {
 }
 
 export default setting
+
+
+
+export const metadata = {
+  title: "Settings | Shopico",
+  description: "Manage your Shopico account settings, update profile information, and change preferences.",
+  
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+  },
+
+  openGraph: {
+    title: "Account Settings - Shopico",
+    robots: "noindex",
+  },
+};

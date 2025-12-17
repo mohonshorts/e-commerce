@@ -206,20 +206,6 @@ const Allproduct = ({ params }) => {
     return (
         <div className=' bg-gray-50'>
             <Navbar />
-            <ToastContainer
-                position="top-right"
-                autoClose={1000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick={false}
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-                transition={Bounce}
-            />
-
             <div className='mt-5 m-2'>
 
                 <h2 className='select-none text-center text-2xl font-bold text-black flex items-center  '><AiOutlineProduct className="material-symbols-outlined " />Buy Product</h2>

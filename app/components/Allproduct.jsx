@@ -33,7 +33,7 @@ const Allproduct = () => {
 
     }, [])
     return (
-        <div>
+        <div className="pb-24 md:pb-32">
 
             <div className='mt-5'>
                 <Link href="/allproductlist"><h2 className='select-none text-start text-2xl font-bold text-black flex items-center '><AiOutlineProduct className="material-symbols-outlined " />All Product</h2></Link>
@@ -45,10 +45,10 @@ const Allproduct = () => {
                     ) : (product.map((item, index) => (
                                 <Link key={item._id || index} href={"productd/" + item._id}>
                                     <div className="topCon relative h-[170px] w-[350px] md:h-[200px] md:w-[420px] rounded-xl text-black flex items-center justify-center border  border-gray-300 shadow-[0px_10px_30px_0px_rgba(255,182,193,0.3)] ">
-                                        <div className=' overflow-hidden imgp text-center flex items-center justify-center bg-white h-full w-full rounded-l-xl' >
+                                        <div className=' overflow-hidden imgp text-center flex items-center justify-center bg-white h-full w-1/2 rounded-l-xl' >
                                             <img className='wfull h-full object-cover hover:scale-105 transition duration-300' src={item.img_p} alt="" />
                                         </div>
-                                        <div className='pdete bg-white h-full w-full rounded-r-xl flex flex-col p-2'>
+                                        <div className='pdete bg-white h-full w-1/2 rounded-r-xl flex flex-col p-2'>
                                             <p className='text-black text-xl md:line-clamp-2 line-clamp-1 leading-6'>{item.title}</p>
                                             <div className='flex justify-start gap-2 mt-2 items-center'>
                                                 <del><h2 className='md:text-lg font-bold text-gray-500'>৳
@@ -58,7 +58,7 @@ const Allproduct = () => {
                                             </div>
                                             <div className='flex justify-start gap-2 mt-2 items-center'>
                                                 <h2 className='text-sm font-bold  text-black'>Stock : {item.qauntity}</h2>
-                                                <AddToCartBtn product={JSON.parse(JSON.stringify(item))} />
+                                                <AddToCartBtn productId={item._id} />
                                             </div>
 
                                             <div className='mt-auto flex justify-center items-center bottom-0'>
