@@ -24,7 +24,6 @@ export default function CheckoutPage() {
             try {
                 const res = await fetch("/api/add/navtext");
                 const data = await res.json();
-                console.log(data);
                 if (data.result && data.result.length > 0) {
                     setCost(Number(data.result[0].cost) || 0);
                     setPaymentBkash(Number(data.result[0].bkash_payment) || 0);
@@ -82,6 +81,14 @@ export default function CheckoutPage() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(orderPayload)
             })
+            
+            fetch("https://my-n8n-server-rjkz.onrender.com/webhook/order-notification", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                mode: "cors",
+                body: JSON.stringify(orderPayload)
+            })
+
             const data = await res.json()
             if (data.success) {
                 toast.success('Your Oder Placed successfully!', {
@@ -103,16 +110,16 @@ export default function CheckoutPage() {
         } catch (error) {
             setIsOrdering(false);
             toast.error('try againg leter!', {
-                    position: "top-right",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    transition: Bounce,
-                })
+                position: "top-right",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
         }
 
     }
@@ -273,9 +280,9 @@ export default function CheckoutPage() {
                             <span>৳{totalPrice}</span>
                         </div>
                         <button
-                        disabled={isOrdering}
-                         type="submit" 
-                         className="w-full bg-slate-800 text-white font-bold py-4 rounded-md mt-6 hover:bg-black transition-all shadow-md">
+                            disabled={isOrdering}
+                            type="submit"
+                            className="w-full bg-slate-800 text-white font-bold py-4 rounded-md mt-6 hover:bg-black transition-all shadow-md">
                             CONFIRM ORDER
                         </button>
                     </div>

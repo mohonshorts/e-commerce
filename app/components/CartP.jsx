@@ -27,7 +27,6 @@ export default function CartPage() {
         body: JSON.stringify({ ids: allIds }),
       })
       const data = await res.json()
-      console.log(data)
       const productsQty = data.map((product) => ({
         ...product,
         quay: 1,

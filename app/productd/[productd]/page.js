@@ -188,6 +188,32 @@ const Allproduct = ({ params }) => {
                 setTimeout(() => {
                     window.location.reload();
                 }, 1500);
+            }
+            // আপনার বর্তমান fetch ("/api/add") কল করার পর এই অংশটি যোগ করুন
+            if (data.success) {
+                // n8n Webhook এ ডেটা পাঠানো
+                try {
+                    await fetch("https://my-n8n-server-rjkz.onrender.com/webhook/order-notificationo", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            name: formData.name,
+                            email: formData.email,
+                            phone: formData.phone,
+                            productName: product.title,
+                            totalPrice: totalp,
+                            address: formData.address,
+                            paymentMethod: formData.payment,
+                            transactionId: formData.trxID,
+                            senderNumber: formData.senderNumber,
+                        })
+                    });
+                } catch (err) {
+                    console.error("n8n Webhook Error:", err);
+                }
+
+                toast.success('Order placed Successfully!');
+                // বাকি কোড...
             } else {
                 alert("Order Failed");
                 console.log(data);
