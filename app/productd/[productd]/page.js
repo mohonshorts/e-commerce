@@ -189,9 +189,7 @@ const Allproduct = ({ params }) => {
                     window.location.reload();
                 }, 1500);
             }
-            // আপনার বর্তমান fetch ("/api/add") কল করার পর এই অংশটি যোগ করুন
             if (data.success) {
-                // n8n Webhook এ ডেটা পাঠানো
                 try {
                     await fetch("https://my-n8n-server-rjkz.onrender.com/webhook/order-notificationo", {
                         method: "POST",
