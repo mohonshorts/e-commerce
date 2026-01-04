@@ -36,7 +36,7 @@ const Topcata = () => {
             <div className='mt-5'>
 
 
-                <Link href="/top"><h2 className='text-start text-2xl font-bold text-black flex items-center select-none'><MdOutlineCategory className="material-symbols-outlined " />Top Categoris</h2></Link>
+                <Link href="/top"><h2 className='text-start text-2xl font-bold text-black flex items-center select-none'><MdOutlineCategory className="material-symbols-outlined " />Top Categories</h2></Link>
 
                 <div className='Top  grid grid-cols-2 md:grid-cols-5 place-items-center gap-6 m-3'>
                     {isLoading ? (
